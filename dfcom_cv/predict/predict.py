@@ -26,10 +26,9 @@ class ImagePredictor:
         Returns:
             str: Predicted class label.
         """
-        # Ensure the image is in the correct format
+
         if isinstance(image_array, np.ndarray):
-            # Preprocess the image as needed by the model
-            image_array = np.expand_dims(image_array, axis=0)  # Add batch dimension
+            image_array = np.expand_dims(image_array, axis=0)
             predictions = self.model.predict(image_array)
             predicted_label = self.label_encoder.inverse_transform([np.argmax(predictions)])
             return predicted_label[0]

@@ -29,7 +29,7 @@ class ImageLoader:
 
         for category in os.listdir(folder_path):
             category_path = os.path.join(folder_path, category)
-            
+
             # Check if it's a directory
             if os.path.isdir(category_path):
                 for i, image_name in enumerate(os.listdir(category_path)):

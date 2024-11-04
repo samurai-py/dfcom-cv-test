@@ -18,9 +18,9 @@ class CNNTrainer(BaseTrainer):
             Dropout(0.5),
             Dense(self.num_classes, activation='softmax')
         ])
-        
-        model.compile(optimizer=Adam(learning_rate=self.learning_rate), 
-                      loss='categorical_crossentropy', 
+
+        model.compile(optimizer=Adam(learning_rate=self.learning_rate),
+                      loss='categorical_crossentropy',
                       metrics=['accuracy'])
-        
+
         return model

@@ -13,9 +13,9 @@ class BaseTrainer(ABC):
         pass
 
     def train(self, X_train, y_train, X_val, y_val, epochs=10, batch_size=32):
-        return self.model.fit(X_train, y_train, 
-                              epochs=epochs, 
-                              batch_size=batch_size, 
+        return self.model.fit(X_train, y_train,
+                              epochs=epochs,
+                              batch_size=batch_size,
                               validation_data=(X_val, y_val))
 
     def evaluate(self, X_test, y_test):
