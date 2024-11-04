@@ -32,6 +32,10 @@ dfcom_cv
 └── setup.py
 ```
 
+## Requisitos
+
+Para executar o projeto no google colab, é preciso de uma chave de API Kaggle. O resto da aplicação pode ser executado normalmente.
+
 ## Instalação
 Para instalar o projeto, siga os passos abaixo:
 
