@@ -1,4 +1,3 @@
-import numpy as np
 from tensorflow.keras.applications import VGG16
 from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.layers import Dense, Flatten, Dropout

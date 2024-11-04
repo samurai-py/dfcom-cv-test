@@ -1,25 +1,26 @@
 import cv2
 import matplotlib.pyplot as plt
-import numpy as np
 import os
 
 class ImageLoader:
     def __init__(self, max_images=None):
         """
         Initialize the ImageLoader with an optional maximum number of images to load.
-        
+
         Args:
-            max_images (int, optional): Maximum number of images to load per category. Defaults to None, which loads all images.
+            max_images (int, optional): Maximum number of images to load per category.
+            Defaults to None, which loads all images.
         """
         self.max_images = max_images
 
     def load_images(self, folder_path):
         """
         Load images and their labels from a specified directory.
-        
+
         Args:
-            folder_path (str): Path to the main folder containing subfolders of images for each category.
-        
+            folder_path (str): Path to the main folder containing
+            subfolders of images for each category.
+
         Returns:
             images (list): List of loaded images as numpy arrays.
             labels (list): List of labels corresponding to each image.
@@ -49,11 +50,12 @@ class ImageLoader:
     def visualize_images(self, images, labels, max_images=None):
         """
         Visualize a given list of images with corresponding labels.
-        
+
         Args:
             images (list): List of images to visualize.
             labels (list): List of labels corresponding to each image.
-            max_images (int, optional): Maximum number of images to display. Defaults to None, which displays all images.
+            max_images (int, optional): Maximum number of images to display.
+            Defaults to None, which displays all images.
         """
         max_images = max_images if max_images is not None else len(images)
 

@@ -1,6 +1,4 @@
 import numpy as np
-import cv2
-from sklearn.preprocessing import LabelEncoder
 
 class ImagePredictor:
     def __init__(self, model, label_encoder, target_size=(100, 100)):

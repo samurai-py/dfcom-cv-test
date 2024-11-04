@@ -1,7 +1,3 @@
-import os
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-
 class ModelReloader:
     def __init__(self, cnn_trainer, transfer_learning_trainer, save_dir="models"):
         """
@@ -9,7 +5,7 @@ class ModelReloader:
 
         Args:
             cnn_trainer (CNNTrainer): Instance of the CNNTrainer.
-            transfer_learning_trainer (TransferLearningTrainer): Instance of the TransferLearningTrainer.
+            transfer_learning_trainer (TransferLearningTrainer): Instance of the Class.
             save_dir (str): Directory where the models will be saved.
         """
         self.cnn_trainer = cnn_trainer
@@ -27,12 +23,14 @@ class ModelReloader:
             y_val (np.array): Validation labels.
             epochs (int): Number of training epochs.
             batch_size (int): Batch size for training.
-        
+
         Returns:
             History: Training history object.
         """
         print("Retraining CNN model...")
-        history = self.cnn_trainer.train(X_train, y_train, X_val, y_val, epochs=epochs, batch_size=batch_size)
+        history = self.cnn_trainer.train(X_train, y_train, X_val, y_val,
+                                         epochs=epochs,
+                                         batch_size=batch_size)
         self.cnn_trainer.save_model(save_dir=self.save_dir)
         return history
 
@@ -47,11 +45,13 @@ class ModelReloader:
             y_val (np.array): Validation labels.
             epochs (int): Number of training epochs.
             batch_size (int): Batch size for training.
-        
+
         Returns:
             History: Training history object.
         """
         print("Retraining Transfer Learning model...")
-        history = self.transfer_learning_trainer.train(X_train, y_train, X_val, y_val, epochs=epochs, batch_size=batch_size)
+        history = self.transfer_learning_trainer.train(X_train, y_train, X_val, y_val,
+                                                       epochs=epochs,
+                                                       batch_size=batch_size)
         self.transfer_learning_trainer.save_model(save_dir=self.save_dir)
         return history
