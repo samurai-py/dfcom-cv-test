@@ -2,7 +2,7 @@ import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from tensorflow.keras.optimizers import Adam
-from base_trainer import BaseTrainer
+from .base_trainer import BaseTrainer
 
 class CNNTrainer(BaseTrainer):
     def _build_model(self):

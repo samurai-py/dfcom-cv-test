@@ -1,4 +1,3 @@
-import os
 import numpy as np
 import cv2
 from sklearn.preprocessing import LabelEncoder
@@ -17,7 +16,7 @@ class ImagePredictor:
         self.label_encoder = label_encoder
         self.target_size = target_size
 
-    def predict(self, image_path):
+    def predict(self, image_array):
         """
         Predict the class of a new image.
 
@@ -27,17 +26,12 @@ class ImagePredictor:
         Returns:
             str: Predicted class label.
         """
-        image = cv2.imread(image_path)
-        if image is None:
-            raise ValueError(f"Error loading image at path: {image_path}")
-
-        # Resize and normalize the image
-        image = cv2.resize(image, self.target_size) / 255.0
-        image_array = np.expand_dims(image, axis=0)  # Add a new dimension
-
-        # Make prediction
-        prediction = self.model.predict(image_array)
-        predicted_class_index = np.argmax(prediction)
-        predicted_class = self.label_encoder.inverse_transform([predicted_class_index])
-
-        return predicted_class[0]
+        # Ensure the image is in the correct format
+        if isinstance(image_array, np.ndarray):
+            # Preprocess the image as needed by the model
+            image_array = np.expand_dims(image_array, axis=0)  # Add batch dimension
+            predictions = self.model.predict(image_array)
+            predicted_label = self.label_encoder.inverse_transform([np.argmax(predictions)])
+            return predicted_label[0]
+        else:
+            raise ValueError("Expected image_array to be a numpy array")

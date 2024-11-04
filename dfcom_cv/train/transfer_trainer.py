@@ -3,7 +3,7 @@ from tensorflow.keras.applications import VGG16
 from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.layers import Dense, Flatten, Dropout
 from tensorflow.keras.optimizers import Adam
-from base_trainer import BaseTrainer
+from .base_trainer import BaseTrainer
 
 class TransferLearningTrainer(BaseTrainer):
     def _load_base_model(self):
